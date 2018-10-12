@@ -5,6 +5,7 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { hmrBootstrap } from './hmr';
 
+
 if (environment.production) {
   enableProdMode();
 }
@@ -17,6 +18,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
 
   if (environment.hmr) {
+    
+    const API_URL = environment.apiUrl;
     if (module[ 'hot' ]) {
       hmrBootstrap(module, bootstrap);
     } else {

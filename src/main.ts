@@ -18,8 +18,6 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
 
   if (environment.hmr) {
-    
-    const API_URL = environment.apiUrl;
     if (module[ 'hot' ]) {
       hmrBootstrap(module, bootstrap);
     } else {

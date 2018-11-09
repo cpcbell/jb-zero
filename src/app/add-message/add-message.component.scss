@@ -8,3 +8,23 @@
  .mat-form-field {
     width: 100%;
  }
+
+ .mat-card-actions{
+     padding: 0;
+ } 
+ .mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title{
+     margin: 0;
+ }
+ .mat-card-actions .mat-button, .mat-card-actions .mat-raised-button{
+     padding-left: 0;
+     border: solid 1px green;
+     color: blue;
+ } 
+ ul, menu, dir {
+     list-style-type: none;
+     list-style-position: unset;
+     padding: 0 20px;
+ }
+ li{
+     border-bottom: 1px dashed rgba(30,200,30,0.8);
+ }

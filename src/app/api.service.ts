@@ -16,7 +16,8 @@ export class ApiService {
   ) { 
   }
   getPosts(){
-    return this.httpClient.get(`${this.API_URL}/posts`);
+    let sort = '?_sort=id&_order=desc';
+    return this.httpClient.get(`${this.API_URL}/posts${sort}`);
   }
   createPost(post){
     return  this.httpClient.post(`${this.API_URL}/posts/`,post);

@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { AddMessageComponent } from './add-message/add-message.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { DivPostListComponent } from './div-post-list/div-post-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PostListComponent } from './post-list/post-list.component';
     AddMessageComponent,
     ViewMessagesComponent,
     AddMessageComponent,
-    PostListComponent
+    PostListComponent,
+    DivPostListComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { ViewMessagesComponent } from './view-messages/view-messages.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { AddMessageComponent } from './add-message/add-message.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -54,8 +54,9 @@ import { DivPostListComponent } from './div-post-list/div-post-list.component';
   MatInputModule,
   MatDatepickerModule,
   FormsModule,
+  ReactiveFormsModule,
   MatNativeDateModule,
-  HttpClientModule
+  HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

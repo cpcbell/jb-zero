@@ -1,14 +1,17 @@
-<button id="refresh-btn" class="btn btn-primary" >ReFr3sH...</button>
-<form name="form" [formGroup]="messageForm" (ngSubmit)="onSubmit()" >
+<div class="input-area">
+<div class="refresh-div">
+  <button id="refresh-btn" class="btn btn-primary" routerLink="/">ReFr3sH...</button>
+</div>
+<!--  formControlName="message"-->
+<form [formGroup]="form" (ngSubmit)="onSubmit()" >
 
   <mat-form-field>
-    <!-- textarea formControlName="message" [(ngModel)]="data.message" placeholder="Type..." rows="3" name="message"></textarea -->
-    <textarea matInput cdkTextareaAutosize
-            cdkAutosizeMinRows="2"
-            cdkAutosizeMaxRows="5" formControlName="message" [(ngModel)]="data.message" placeholder="Type..."></textarea>
+    <!-- textarea  [(ngModel)]="data.message" placeholder="Type..." rows="3" name="message"></textarea -->
+     <textarea formControlName="message" matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" name="message" [(ngModel)]="data.message" placeholder="Type..."></textarea>
     <button class="btn btn-primary" type="submit" >CH@T...</button>
   </mat-form-field>
 </form>
+</div>
     <!-- 
 maxlength="300" 
       mat-card class="message-card">
@@ -29,6 +32,9 @@ maxlength="300"
    <pre> {{ message | json }} </pre -->
 <div>
   <ul *ngFor="let post of posts">
-    <li><div class="jb-message">{{post.title}}</div></li>
+    <li>
+      <div class="jb-message">{{post.title}}</div>
+      <div *ngIf="post.link"><a href="{{post.link.href}}" target="_blank">Go to this...</a></div>
+    </li>
   </ul> 
 </div>

@@ -4,16 +4,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 
 
+//form: new FormGroup({'message'});
+
 @Component({
   selector: 'app-add-message',
   templateUrl: './add-message.component.html',
   styleUrls: ['./add-message.component.scss']
 })
+
 export class AddMessageComponent implements OnInit {
-  messageForm: FormGroup;
+  form: FormGroup;
   message: any = {};
   data: any = {};
-  posts: any = {};
+  posts: any = [];
   submitted: boolean;
 
   constructor(private  apiService:  ApiService,
@@ -24,18 +27,47 @@ export class AddMessageComponent implements OnInit {
     this.getPost();
   }
 
-  get f() { return this.messageForm.controls; }
+  get f() { return this.form.controls; }
 
   public buildForm(){
-    this.messageForm = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       message: ['', Validators.required], 
     },{});
+  }
+
+  public linkIt(data){
+
+    var beg_pat = new RegExp('(https?\:\/\/.*)\s+','g');
+    var e = {};
+
+    var new_data = [];
+
+    data.forEach(e => {
+      var new_row = e;
+      var scan = e.title;
+      var is_http = scan.match(beg_pat);
+      console.log(is_http);
+
+      if(is_http && is_http.length){
+        let link = document.createElement('a');
+        link.href = is_http[0];
+        link.innerHTML = 'Open this...';
+        e.link = link;
+        new_row = e;
+        console.log(new_row);
+      }
+
+      new_data.push(new_row);
+    });
+
+    return new_data;
   }
   
   public getPost(){
     this.apiService.getPosts().subscribe((data:  Array<object>) => {
+        data = this.linkIt(data);
         this.posts  = data;
-        console.log(data);
+        // console.log(data);
     });
   }
 
@@ -50,7 +82,7 @@ export class AddMessageComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.messageForm.invalid) {
+    if (this.form.invalid) {
             return;
     }
     //console.log(f);

@@ -7,12 +7,13 @@ import { ApiService } from  '../api.service';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
-private  posts:  Array<object> = [];
+public  posts:  Array<object> = [];
 constructor(private  apiService:  ApiService) { }
 ngOnInit() {
+    this.posts = [];
     this.getPosts();
 }
-public  getPosts(){
+public getPosts(){
     this.apiService.getPosts().subscribe((data:  Array<object>) => {
         this.posts  =  data;
         console.log(data);

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./div-post-list.component.scss']
 })
 export class DivPostListComponent implements OnInit {
+public  posts:  Array<object> = [];
 
   constructor() { }
 

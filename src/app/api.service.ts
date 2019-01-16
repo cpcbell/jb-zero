@@ -10,7 +10,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
-  API_URL  =  'http://localhost:3000';
+  API_URL  =  environment.apiUrl; // 'http://mini.local:8001';
   constructor(
     private httpClient:HttpClient
   ) { 

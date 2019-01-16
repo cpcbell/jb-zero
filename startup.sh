@@ -49,8 +49,9 @@ trap clean_up SIGHUP SIGINT SIGTERM
 
 #pr $1 > $TEMP_FILE || error_exit "cannot format file"
 source ~/.bash_profile 
-json-server --watch json/jb.json > $TEMP_FILE 2>&1  &
-ng serve --hmr --configuration=hmr > $TEMP_FILE 2>&1 &
+#json-server --watch json/jb.json > $TEMP_FILE 2>&1  &
+#ng serve --hmr --configuration=hmr > $TEMP_FILE 2>&1 &
+ng serve > $TEMP_FILE 2>&1 &
 tail -f $TEMP_FILE 
 
 #echo -n "Print file? [y/n]: "

@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JbNavComponent } from './jb-nav/jb-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatTooltipModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { ViewMessagesComponent } from './view-messages/view-messages.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -29,8 +29,8 @@ import { DivPostListComponent } from './div-post-list/div-post-list.component';
   ],
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     RouterModule.forRoot([
       {
         path: '', component: JbNavComponent, children: [
@@ -41,6 +41,7 @@ import { DivPostListComponent } from './div-post-list/div-post-list.component';
       },
     ]),
     LayoutModule,
+    MatTooltipModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

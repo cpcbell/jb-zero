@@ -1,11 +1,16 @@
 .input-area{
-    margin-left: 3%;
+    margin-left: 2%;
 }
 .message-card {
     min-width: 150px;
     max-width: 400px;
     width: 100%;
     margin: auto;
+    border-bottom: 1px dashed rgba(30,200,30,0.8);
+    padding: 3px 0 5px 0;
+ }
+ .post-div{
+    margin-left: 2%;
  }
  
  .mat-form-field {
@@ -26,8 +31,10 @@
  ul, menu, dir {
      list-style-type: none;
      list-style-position: unset;
-     /* padding: 0 20px; */
+     padding: 0;
+     margin: 0; 
  }
+ /*
  li{
-     border-bottom: 1px dashed rgba(30,200,30,0.8);
  }
+ */

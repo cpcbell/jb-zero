@@ -2,6 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { ApiService } from '../api.service';
+import {interval} from "rxjs/internal/observable/interval";
+import {timer} from "rxjs/internal/observable/timer";
+import {startWith, switchMap,concatMap} from "rxjs/operators";
+//import {Status} from "./models/status.model";
 
 
 //form: new FormGroup({'message'});
@@ -13,19 +17,42 @@ import { ApiService } from '../api.service';
 })
 
 export class AddMessageComponent implements OnInit {
+  //statuses: Status[];
   form: FormGroup;
   message: any = {};
   data: any = {};
   posts: any = [];
   submitted: boolean;
+  refresh_interval: number;
 
   constructor(private  apiService:  ApiService,
     private formBuilder: FormBuilder
   ){}
+
+  public getPost(){
+    console.log('GET POST RUNS');
+    this.apiService.getPosts().subscribe((data:  Array<object>) => {
+        data = this.linkIt(data);
+        this.posts  = data;
+        // console.log(data);
+    });
+  }
+
+  public createPost(post){
+    this.apiService.createPost(post).subscribe((response) => {
+      this.getPost();
+      console.log(response);
+    });
+  }
+
   ngOnInit() {
     this.buildForm();
-    this.getPost();
+    const trigger$ = timer(0, 8500);
+    trigger$.subscribe(
+      ()=>this.getPost()
+    );
   }
+
 
   get f() { return this.form.controls; }
 
@@ -80,20 +107,6 @@ export class AddMessageComponent implements OnInit {
     return new_data;
   }
   
-  public getPost(){
-    this.apiService.getPosts().subscribe((data:  Array<object>) => {
-        data = this.linkIt(data);
-        this.posts  = data;
-        // console.log(data);
-    });
-  }
-
-  public createPost(post){
-    this.apiService.createPost(post).subscribe((response) => {
-      this.getPost();
-      console.log(response);
-    });
-  }
   
   onSubmit() {
     this.submitted = true;
@@ -107,4 +120,11 @@ export class AddMessageComponent implements OnInit {
     this.createPost(post);
     this.data.message = '';
   }
+
+  /*
+  postRefresh(){
+    setInterval(getPost,this.refresh_interval);
+  }
+  */
+
 }

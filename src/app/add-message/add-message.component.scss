@@ -2,12 +2,22 @@
     margin-left: 2%;
 }
 .message-card {
+    /*
     min-width: 150px;
     max-width: 400px;
+    */
     width: 100%;
-    margin: auto;
+    /* margin: auto; */
     border-bottom: 1px dashed rgba(30,200,30,0.8);
     padding: 3px 0 5px 0;
+ }
+ .message-card img{
+     width: 95%;
+     border: 2px dotted #b06222;
+ }
+
+ .message-card a{
+     color: red;
  }
  .post-div{
     margin-left: 2%;

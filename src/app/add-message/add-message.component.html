@@ -35,9 +35,9 @@ maxlength="300"
   <ul *ngFor="let post of posts">
     <li>
       <div class="message-card">
-      <div class="jb-message">{{post.title}}</div>
-      <div *ngIf="post.link"><a href="{{post.link.href}}" target="_blank">Go to this...</a></div>
-      <div *ngIf="post.img"><img src="{{post.img.src}}"></div>
+        <div class="jb-message">{{post.title}}</div>
+        <div *ngIf="post.link"><a href="{{post.link.href}}" target="_blank">Go to this if you have the ballz...</a></div>
+        <div *ngIf="post.img"><img src="{{post.img.src}}"></div>
       </div>
     </li>
   </ul> 

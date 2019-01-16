@@ -47,10 +47,13 @@ export class AddMessageComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    this.getPost();
+    /*
     const trigger$ = timer(0, 8500);
     trigger$.subscribe(
       ()=>this.getPost()
     );
+    */
   }
 
 

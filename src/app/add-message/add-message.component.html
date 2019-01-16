@@ -35,6 +35,7 @@ maxlength="300"
     <li>
       <div class="jb-message">{{post.title}}</div>
       <div *ngIf="post.link"><a href="{{post.link.href}}" target="_blank">Go to this...</a></div>
+      <div *ngIf="post.img"><img src="{{post.img.src}}"></div>
     </li>
   </ul> 
 </div>

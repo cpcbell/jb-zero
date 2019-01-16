@@ -37,7 +37,8 @@ export class AddMessageComponent implements OnInit {
 
   public linkIt(data){
 
-    var beg_pat = new RegExp('(https?\:\/\/.*)\s+','g');
+    var beg_pat = /(https?\:\/\/\S+)/gm;
+    var img_pat = /jpg|png|gif$/gm;
     var e = {};
 
     var new_data = [];
@@ -46,17 +47,33 @@ export class AddMessageComponent implements OnInit {
       var new_row = e;
       var scan = e.title;
       var is_http = scan.match(beg_pat);
+      /*
+      console.log(scan);
       console.log(is_http);
-
+      */
+      /*
+      Is this shit linkable?
+      */
       if(is_http && is_http.length){
-        let link = document.createElement('a');
-        link.href = is_http[0];
-        link.innerHTML = 'Open this...';
-        e.link = link;
+        let firstLink = is_http[0];
+        /*
+        Is this shit an img?
+        */
+        if( firstLink.match(img_pat) ){
+          console.log(firstLink);
+          let img = document.createElement('img');
+          img.src = firstLink;
+          e.img = img
+        }
+        else{
+          let link = document.createElement('a');
+          link.href = firstLink;
+          //link.innerHTML = 'Open this...';
+          e.link = link;
+        }
         new_row = e;
-        console.log(new_row);
+        //console.log(new_row);
       }
-
       new_data.push(new_row);
     });
 

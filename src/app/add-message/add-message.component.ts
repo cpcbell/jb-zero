@@ -56,5 +56,6 @@ export class AddMessageComponent implements OnInit {
     //console.log(f);
     let post = {'title':this.data.message,'author':this.data.message};
     this.createPost(post);
+    this.data.message = '';
   }
 }

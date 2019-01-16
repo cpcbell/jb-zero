@@ -1,13 +1,20 @@
 <form name="form" [formGroup]="messageForm" (ngSubmit)="onSubmit()" >
-    <textarea formControlName="message" [(ngModel)]="data.message" placeholder="Type..." rows="3" maxlength="300" name="message"></textarea>
+
+  <mat-form-field>
+    <!-- textarea formControlName="message" [(ngModel)]="data.message" placeholder="Type..." rows="3" name="message"></textarea -->
+    <textarea matInput cdkTextareaAutosize
+            cdkAutosizeMinRows="2"
+            cdkAutosizeMaxRows="5" formControlName="message" [(ngModel)]="data.message" placeholder="Type..."></textarea>
     <button class="btn btn-primary" type="submit" >GO...</button>
+  </mat-form-field>
 </form>
-    <!-- mat-card class="message-card">
+    <!-- 
+maxlength="300" 
+      mat-card class="message-card">
       <mat-card-title>
         Add a message
       </mat-card-title>
       <mat-card-content>
-        <mat-form-field>
           <input type="string" disabled matInput placeholder="Select the date..." [(ngModel)]="message.date" name="date" [matDatepicker]="date">
           <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
           <mat-datepicker disabled="false" #date></mat-datepicker>
@@ -17,8 +24,8 @@
       </mat-card-content>
       <mat-card-actions>
       </mat-card-actions>
-    </mat-card-->
-   <pre> {{ message | json }} </pre>
+    </mat-card>
+   <pre> {{ message | json }} </pre -->
 <div>
   <ul *ngFor="let post of posts">
     <li><div class="jb-message">{{post.title}}</div></li>

@@ -32,6 +32,8 @@ import { DivPostListComponent } from './div-post-list/div-post-list.component';
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     RouterModule.forRoot([
+{ path: '', component: AddMessageComponent }
+      /*
       {
         path: '', component: JbNavComponent, children: [
           { path: 'add-message', component: AddMessageComponent },
@@ -39,6 +41,7 @@ import { DivPostListComponent } from './div-post-list/div-post-list.component';
           { path: 'post-list', component: PostListComponent }
         ]
       },
+        */
     ]),
     LayoutModule,
     MatTooltipModule,
